@@ -36,4 +36,6 @@ paste a monthly csv file of expenses into the folder, run py script, and have ea
 
 ## FUTURE PLANS
 
+have each expense csv named and archived into subfolder after exporting into Budget excel sheet
+have category sumtotal values saved in Monthly Expenses sheet for previous month when importing new month expenses for comparison 
 have 'sorter.py' flag credit card payments in 'export.csv', recalculate, and update values for existing credit cards in 'testBudget.xlsx'
