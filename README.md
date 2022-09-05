@@ -1,6 +1,6 @@
 # AutoBudgeter
 
-- imports bankstatement csv, sorts expenses, and exports to Budget excel sheet
+paste a monthly csv file of expenses into the folder, run py script, and have each expense categorized and summed to export to budget excel sheet for easy sorting and viewing of monthly budget status
 
 ## WORKING
 
