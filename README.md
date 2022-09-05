@@ -1,8 +1,8 @@
 # AutoBudgeter
 
-## WORKING
-
 - imports bankstatement csv, sorts expenses, and exports to Budget excel sheet
+
+## WORKING
 
 - 'sorter.py' looks for CSV file named 'export.csv'
 
