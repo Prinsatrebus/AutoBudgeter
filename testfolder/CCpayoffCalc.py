@@ -21,7 +21,7 @@ while running == True:
     
     name.payoffcalc()
     
-    input('')
+    input('\nPress any key to continue... ')
     
     if input('\nWould you like to do calculations for another Credit Card?') == 'n':
         running = False
