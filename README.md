@@ -26,10 +26,6 @@ paste a monthly csv file of expenses into the folder, run py script, and have ea
 
 - overwrite the existing 'expensecategories.json' dictionary with the new appended one to be used on the next bankstatement csv import
 
-## WIP
-
-- categorizer function does not detect when expenses contain existing keywords
-
 ### CCpayoffCalc.py
 
 - 'CCpayoffCalc.py' imports CreditCard class from 'CC'
@@ -38,5 +34,6 @@ paste a monthly csv file of expenses into the folder, run py script, and have ea
 
 ## FUTURE PLANS
 
+- Hella tidying up on UI as well as excel sheet for export
 - have each expense csv named and archived into subfolder after exporting into Budget excel sheet
 - have 'sorter.py' flag credit card payments in 'export.csv', recalculate, and update values for existing credit cards in 'testBudget.xlsx'
