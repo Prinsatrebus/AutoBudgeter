@@ -35,18 +35,21 @@ time.sleep(2)
 
 # reset list and dictionary values to default for testing
 
-expensecategories = {'testkey' : 'testvalue'}
-expensecategorieslist = ["test1","test2"]
+""" expensecategories = {'testkey' : 'testvalue'}
+expensecategorieslist = ["test1","test2"] """
 
 
 # Sort expenses using list for keyword detection, then dictionary for category assignment
 
 def categorizer(expensecategories, expensecategorieslist, expense_name):
     expense_name = expense_name.lower()
-    for item in expensecategorieslist:
-        if item in expense_name.lower():
-            return expensecategories[item]
-        else:
+    listcheck = True
+    while listcheck == True:
+        for item in expensecategorieslist:
+            if item in expense_name:
+                listcheck = False
+                return expensecategories[item]
+        if listcheck == True:
             print(expensecategories)
             newcat = input(f"{expense_name} doesn't seem to contain any of the keywords. Is this a new category? y/n").lower()
             if newcat == 'y':
@@ -77,15 +80,20 @@ def categorizer(expensecategories, expensecategorieslist, expense_name):
                     return expensecategories[newkeyword]
                 elif newkey == 'n':
                     print("no actions chosen") 
+                    listcheck = False
                 else:
                     print("possible error")
+                    listcheck = False
             else:
-                print("This appears to be an error. Please consult YOUR MOM'S ASS for further assistance.")           
+                print("This appears to be an error. Please consult YOUR MOM'S ASS for further assistance.")
+                listcheck = False           
                     
                 
 importtest['Category'] = importtest['Description'].apply(lambda x: categorizer(expensecategories,expensecategorieslist,x))
 
 categoryvalues = importtest.groupby('Category')['dolval'].sum()
+categoryvalues.drop('income', inplace=True)
+categoryvalues.loc['Total'] = categoryvalues.sum(numeric_only=True)
 
 print(categoryvalues)
 time.sleep(5)
@@ -106,8 +114,8 @@ importtest2 = importtest.copy()
 with pd.ExcelWriter('testBudget.xlsx', engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
     importtest2.to_excel(writer, sheet_name='importtest')
     
-with pd.ExcelWriter('testBudget.xlsx', engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
-    categoryvalues.to_excel(writer, sheet_name='categoryvalues')
+with pd.ExcelWriter('testBudget.xlsx', engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
+    categoryvalues.to_excel(writer, sheet_name='Monthly Expenses', header=False, index=True, startrow=3, startcol=1)
 
 ######################### Working on later ###########################
 
